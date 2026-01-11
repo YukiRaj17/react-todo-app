@@ -13,5 +13,5 @@ A simple Todo List application built using JavaScript and the React library (CDN
 - HTML
 
 ## How to Run
-Open `index.html` in any modern web browser.
+Open `react-todo-app.html` in any modern web browser.
 
