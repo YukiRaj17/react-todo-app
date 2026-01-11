@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Todo App</title>
+
+    <!-- React Library -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        .app {
+            background: white;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- React mounts here -->
+    <div id="root"></div>
+
+    <!-- React Code -->
+    <script type="text/babel">
+        function TodoApp() {
+
+            const [tasks, setTasks] = React.useState([]);
+            const [input, setInput] = React.useState("");
+
+            function addTask() {
+                if (input !== "") {
+                    setTasks([...tasks, input]);
+                    setInput("");
+                }
+            }
+
+            return (
+                <div className="app">
+                    <h2>Todo List</h2>
+
+                    <input
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Enter task"
+                    />
+
+                    <button onClick={addTask}>Add</button>
+
+                    <ul>
+                        {tasks.map((task, index) => (
+                            <li key={index}>{task}</li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<TodoApp />);
+    </script>
+
+</body>
+</html>
